@@ -20,21 +20,30 @@ public class Task2 {
         System.out.println("Average Item Move Time: " + avgMoveTime);
         System.out.println("\nOutput values:");
 
-        for (PetriP p : model.getListObj().get(0).getNet().getListP()) {
+        double avgDevice1load = 0.0, avgDevice2load = 0.0, avgDevice3load = 0.0, avgDevice4load = 0.0, avgDevice5load = 0.0;
+
+        for (PetriP p : model.getListObj().getFirst().getNet().getListP()) {
             if (Objects.equals(p.getName(), "P6")) {
-                System.out.printf("Average Device 1 Load: %f \n", (1 - p.getMean()));
+                avgDevice1load = (1 - p.getMean());
+                System.out.printf("Average Device 1 Load: %f \n", avgDevice1load);
             } else if (Objects.equals(p.getName(), "P7")) {
-                System.out.printf("Average Device 2 Load: %f \n", (1 - p.getMean()));
+                avgDevice2load = (1 - p.getMean());
+                System.out.printf("Average Device 2 Load: %f \n", avgDevice2load);
             } else if (Objects.equals(p.getName(), "P8")) {
-                System.out.printf("Average Device 3 Load: %f \n", (1 - p.getMean()));
+                avgDevice3load = (1 - p.getMean());
+                System.out.printf("Average Device 3 Load: %f \n", avgDevice3load);
             } else if (Objects.equals(p.getName(), "P9")) {
-                System.out.printf("Average Device 4 Load: %f \n", (1 - p.getMean()));
+                avgDevice4load = (1 - p.getMean());
+                System.out.printf("Average Device 4 Load: %f \n", avgDevice4load);
             } else if (Objects.equals(p.getName(), "P10")) {
-                System.out.printf("Average Device 5 Load: %f \n", (1 - p.getMean()));
+                avgDevice5load = (1 - p.getMean());
+                System.out.printf("Average Device 5 Load: %f \n", avgDevice5load);
             } else if (Objects.equals(p.getName(), "P11")) {
                 System.out.printf("Items processed: %d \n", p.getMark());
             }
         }
+
+        System.out.printf("Average Device Busy: %f \n", 5.0 - ((1 - avgDevice1load) + (1 - avgDevice2load) + (1 - avgDevice3load) + (1 - avgDevice4load) + (1 - avgDevice5load)));
 
     }
 
